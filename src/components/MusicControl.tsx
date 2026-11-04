@@ -37,8 +37,8 @@ export default function MusicControl({ src, label }: MusicControlProps) {
     if (!src || !audio.current) { setUnavailable(true); return }
     if (playing) { audio.current.pause(); setPlaying(false); return }
     try {
-      audio.current.playbackRate = 0.9
-      audio.current.volume = 0.6
+      audio.current.playbackRate = 0.95
+      audio.current.volume = 0.25
       audio.current.preservesPitch = true
       await audio.current.play()
       setPlaying(true)
