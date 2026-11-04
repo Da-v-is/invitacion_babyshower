@@ -1,0 +1,8 @@
+.butterfly { position: relative; display: block; width: 100%; height: 100%; aspect-ratio: 514 / 485; --flap-phase: 0s; }
+.butterfly img { position: absolute; inset: 0; display: block; width: 100%; height: 100%; user-select: none; -webkit-user-drag: none; }
+.body { z-index: 1; }
+.leftWing, .rightWing { z-index: 2; animation: flap .7s ease-in-out infinite alternate; }
+.leftWing { transform-origin: 33.5% 60.6%; animation-delay: var(--flap-phase); }
+.rightWing { transform-origin: 40.7% 60.6%; animation-delay: calc(var(--flap-phase) + .18s); }
+@keyframes flap { from { transform: scaleX(1); } to { transform: scaleX(.45); } }
+@media (prefers-reduced-motion: reduce) { .leftWing, .rightWing { animation: none; } }

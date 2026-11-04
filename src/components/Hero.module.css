@@ -1,0 +1,35 @@
+.hero { position: relative; min-height: min(850px, 100svh); display: flex; flex-direction: column; align-items: center; justify-content: center; overflow: hidden; padding: 3rem 1.25rem 5.4rem; text-align: center; }
+.topline { color: var(--muted); font: 500 .7rem 'Nunito', sans-serif; letter-spacing: .14em; text-transform: uppercase; }
+.photoStage { position: relative; isolation: isolate; display: grid; place-items: center; width: min(100%, 450px); height: clamp(278px, 74vw, 330px); margin: .15rem 0 -.45rem; }
+.photoButterflies { position: absolute; z-index: 3; inset: 0; pointer-events: none; }
+.butterflyPosition { position: absolute; display: block; opacity: .78; filter: saturate(.8); }
+.butterflyPosition > span { width: 100%; height: 100%; }
+.butterflyOne { top: 7%; left: 12%; width: 34px; height: 32px; animation: drift-one 4.8s ease-in-out infinite; }
+.butterflyTwo { top: 3%; right: 13%; width: 29px; height: 28px; animation: drift-two 5.6s ease-in-out infinite; }
+.butterflyThree { top: 39%; left: 1%; width: 31px; height: 30px; animation: drift-three 4.4s ease-in-out infinite; }
+.butterflyFour { right: 1%; top: 48%; width: 33px; height: 32px; animation: drift-four 5.2s ease-in-out infinite; }
+.butterflyFive { bottom: 5%; left: 14%; width: 27px; height: 26px; animation: drift-two 6s ease-in-out infinite reverse; }
+.butterflySix { top: 22%; left: 18%; width: 22px; height: 21px; opacity: .64; animation: drift-three 5.4s ease-in-out infinite reverse; }
+.butterflySeven { top: 23%; right: 18%; width: 24px; height: 23px; opacity: .66; animation: drift-four 6.2s ease-in-out infinite reverse; }
+.butterflyEight { bottom: 15%; left: 3%; width: 23px; height: 22px; opacity: .63; animation: drift-one 5.8s ease-in-out infinite reverse; }
+.butterflyNine { right: 13%; bottom: 4%; width: 27px; height: 26px; opacity: .65; animation: drift-two 6.4s ease-in-out infinite; }
+.babyPhoto { position: relative; z-index: 2; width: clamp(176px, 48vw, 210px); margin: 0; padding: 9px 9px 27px; border: 1px solid #d5c3a7; background: #f7f0e4; transform: rotate(-2.4deg); animation: photo-float 5.2s ease-in-out infinite; }
+.photoWindow { position: relative; width: 100%; height: clamp(118px, 33vw, 140px); overflow: hidden; border: 1px solid #d2c1a9; background: #24202a; }
+.photoWindow img { position: absolute; top: -37%; left: -17%; width: 140%; max-width: none; height: auto; }
+.babyPhoto figcaption { position: absolute; right: 20px; bottom: 3px; left: 12px; color: #8b5c52; font: 400 1.28rem/1.2 'Great Vibes', cursive; }
+.photoSeal { position: absolute; top: 5px; right: 8px; color: #a16d60; font: .75rem 'Cormorant Garamond', serif; }
+.kicker { margin: 0; color: var(--rose-ink); font: 500 clamp(1.5rem, 6vw, 2rem)/1.2 'Cormorant Garamond', serif; letter-spacing: .12em; text-transform: uppercase; }
+.name { margin: -.15rem 0 .15rem; color: #8e4948; font: 400 clamp(4.4rem, 19vw, 7.2rem)/1.05 'Great Vibes', cursive; }
+.host { margin: .4rem 0 1.5rem; color: var(--muted); font: 400 1rem 'Cormorant Garamond', serif; }
+.host span { color: var(--rose-ink); font-weight: 600; }
+.open { padding: .78rem 1.45rem; border: 1px solid rgba(126,75,72,.42); border-radius: 99px; background: rgba(250,244,235,.56); color: var(--rose-ink); font: 700 .78rem 'Nunito', sans-serif; letter-spacing: .04em; cursor: pointer; transition: background .2s, transform .2s; }
+.open:hover { background: #f6e8df; transform: translateY(-2px); }
+.open span { padding-left: .45rem; }
+.scrollNote { position: absolute; bottom: 1.15rem; color: #947471; font: 600 .62rem 'Nunito', sans-serif; letter-spacing: .12em; text-transform: uppercase; }
+@media (min-width: 720px) { .hero { min-height: 760px; padding-top: 3.5rem; padding-bottom: 5rem; } .photoStage { height: 330px; } }
+@keyframes drift-one { 0%,100% { transform: translate(0,0) rotate(-9deg); } 50% { transform: translate(7px,-8px) rotate(8deg); } }
+@keyframes drift-two { 0%,100% { transform: translate(0,0) rotate(7deg); } 50% { transform: translate(-8px,7px) rotate(-10deg); } }
+@keyframes drift-three { 0%,100% { transform: translateY(0) rotate(-6deg); } 50% { transform: translate(5px,-7px) rotate(9deg); } }
+@keyframes drift-four { 0%,100% { transform: translate(0,0) rotate(8deg); } 50% { transform: translate(-5px,-8px) rotate(-8deg); } }
+@keyframes photo-float { 0%,100% { transform: translateY(0) rotate(-2.4deg); } 50% { transform: translateY(-6px) rotate(.8deg); } }
+@media (prefers-reduced-motion: reduce) { .babyPhoto, .butterflyPosition { animation: none; } .open { transition: none; } }

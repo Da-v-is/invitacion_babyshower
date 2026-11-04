@@ -1,0 +1,7 @@
+.copy { max-width: 330px; text-align: center; }
+.copy > p:last-child { margin: .7rem auto 0; color: var(--muted); font: 400 1.13rem/1.5 'Cormorant Garamond', serif; }
+.character { flex: 0 0 155px; width: 155px; height: 230px; }
+@media (max-width: 560px) {
+  .copy { max-width: 280px; }
+  .character { flex-basis: 155px; width: 155px; height: 230px; }
+}

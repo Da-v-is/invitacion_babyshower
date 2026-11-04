@@ -1,0 +1,4 @@
+.footer { padding: 1rem 1.2rem 2.5rem; color: var(--muted); text-align: center; }
+.footer p { max-width: 340px; margin: .2rem auto .9rem; font: 400 1.35rem/1.35 'Cormorant Garamond', serif; }
+.footer a { color: var(--rose-ink); font: 700 .68rem 'Nunito', sans-serif; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
+.heart { color: #a55f5b; font-size: 1.25rem; }

@@ -1,0 +1,14 @@
+.overlay { position: fixed; z-index: 9; inset: 0; overflow: hidden; pointer-events: none; }
+.flight { position: absolute; width: var(--size); height: var(--size); overflow: visible; opacity: .72; animation-duration: 3s; animation-timing-function: cubic-bezier(.22,.68,.32,1); animation-fill-mode: both; }
+.flight > span { display: block; width: 100%; height: 100%; }
+.one { --size: 48px; top: 14%; left: -10%; animation-name: sweep-right; animation-delay: 0s; }
+.two { --size: 34px; top: 30%; right: -9%; animation-name: sweep-left; animation-delay: .08s; }
+.three { --size: 42px; top: 48%; left: -9%; animation-name: sweep-right-high; animation-delay: .16s; }
+.four { --size: 30px; top: 65%; right: -8%; animation-name: sweep-left-low; animation-delay: .24s; }
+.five { --size: 37px; top: 78%; left: -8%; animation-name: sweep-right-low; animation-delay: .32s; }
+@keyframes sweep-right { 0% { opacity: .96; transform: translate3d(0,18px,0) rotate(-12deg) scale(.72); } 14% { opacity: 1; } 100% { opacity: 0; transform: translate3d(125vw,42px,0) rotate(28deg) scale(1.05); } }
+@keyframes sweep-left { 0% { opacity: .96; transform: translate3d(0,-16px,0) rotate(12deg) scale(.7); } 14% { opacity: .95; } 100% { opacity: 0; transform: translate3d(-125vw,28px,0) rotate(-25deg) scale(1); } }
+@keyframes sweep-right-high { 0% { opacity: .96; transform: translate3d(0,24px,0) rotate(16deg) scale(.75); } 14% { opacity: .95; } 100% { opacity: 0; transform: translate3d(125vw,-20px,0) rotate(-30deg) scale(1.1); } }
+@keyframes sweep-left-low { 0% { opacity: .96; transform: translate3d(0,-10px,0) rotate(-14deg) scale(.75); } 14% { opacity: .95; } 100% { opacity: 0; transform: translate3d(-125vw,20px,0) rotate(32deg) scale(1); } }
+@keyframes sweep-right-low { 0% { opacity: .96; transform: translate3d(0,12px,0) rotate(10deg) scale(.72); } 14% { opacity: .95; } 100% { opacity: 0; transform: translate3d(125vw,-26px,0) rotate(-24deg) scale(1.08); } }
+@media (prefers-reduced-motion: reduce) { .flight { display: none; animation: none; } }

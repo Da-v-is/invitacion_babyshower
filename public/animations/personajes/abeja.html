@@ -1,0 +1,81 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Abeja — patrulla de vuelo con aleteo</title>
+<style>
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+/* ============ PERSONAJE: ABEJA = Comportamiento: patrulla — cruza la
+   pantalla de lado a lado, gira al llegar al borde, cabecea y ALETEA de
+   verdad (2 alas en capas separadas, cada una gira en su punto de
+   inserción, igual que las abejas del panal).
+   Imágenes: abeja-cuerpo.png + abeja-ala-1.png + abeja-ala-2.png
+   (mismo lienzo de 500x500, se superponen una encima de otra).  ============ */
+
+/* --- INICIO BLOQUE ABEJA --- */
+.abeja-grupo {               /* envoltorio de vuelo (posición va y viene) */
+  width: var(--w);
+  animation: abeja-patrulla 11s ease-in-out infinite;
+}
+@keyframes abeja-patrulla {
+  /* mira a la derecha al salir; gira justo en las paredes */
+  0%, 100% { transform: translateX(-26vw) scaleX(1); }
+  46%      { transform: translateX(26vw)  scaleX(1); }
+  50%      { transform: translateX(26vw)  scaleX(-1); }
+  96%      { transform: translateX(-26vw) scaleX(-1); }
+}
+.abeja {
+  --w: 95px;                 /* tamaño en pantalla */
+  width: var(--w); aspect-ratio: 1; position: relative;
+  animation: abeja-bob 2.4s ease-in-out infinite;    /* sube y baja */
+}
+@keyframes abeja-bob {
+  0%, 100% { transform: translateY(-7%); }
+  50%      { transform: translateY(9%); }
+}
+.abeja-cabeceo {             /* cabeceo del cuerpo mientras vuela */
+  width: 100%; height: 100%;
+  animation: abeja-tilt 1.2s ease-in-out infinite alternate;
+}
+@keyframes abeja-tilt {
+  from { transform: rotate(4deg); }
+  to   { transform: rotate(-5deg); }
+}
+.abeja img {
+  position: absolute; inset: 0; width: 100%; height: 100%;
+  user-select: none; -webkit-user-drag: none; will-change: transform;
+}
+.abeja .cuerpo { z-index: 1; }
+/* cada ala gira alrededor de SU punto de inserción (medido en la imagen) */
+.abeja .ala-1 { z-index: 2; transform-origin: 40% 47.4%;     /* px: 200,237 */
+  animation: ala-1 .12s ease-in-out infinite alternate; }
+@keyframes ala-1 { from { transform: rotate(-17deg); } to { transform: rotate(15deg); } }
+.abeja .ala-2 { z-index: 2; transform-origin: 51.6% 44.6%;   /* px: 258,223 */
+  animation: ala-2 .1s  ease-in-out infinite alternate; }
+@keyframes ala-2 { from { transform: rotate(13deg); } to { transform: rotate(-15deg); } }
+/*--- FIN BLOQUE ABEJA ---*/
+
+/* Solo para la demo */
+@media (prefers-reduced-motion: reduce) {
+  .abeja-grupo, .abeja, .abeja-cabeceo, .abeja .ala-1, .abeja .ala-2 { animation: none; }
+}
+body { margin:0; min-height:100vh; display:grid; place-items:center;
+       background: transparent; padding: 0; }
+.abeja-grupo { --w: 95px; }
+</style>
+</head>
+<body>
+  <div class="abeja-grupo">
+    <div class="abeja">
+      <div class="abeja-cabeceo">
+        <img class="cuerpo" src="abeja-cuerpo.png" alt="Cuerpo de la abeja" decoding="async">
+        <img class="ala-1" src="abeja-ala-1.png" alt="" decoding="async">
+        <img class="ala-2" src="abeja-ala-2.png" alt="" decoding="async">
+      </div>
+    </div>
+  </div>
+</body>
+</html>

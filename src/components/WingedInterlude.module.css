@@ -1,0 +1,4 @@
+.section { display: flex; align-items: center; justify-content: center; gap: .5rem; max-width: 500px; min-height: 140px; margin: 0 auto; padding: .3rem .5rem; }
+.butterfly { flex: 0 1 230px; width: 230px; height: 140px; }
+.bee { flex: 0 1 200px; width: 200px; height: 136px; }
+@media (max-width: 560px) { .section { flex-direction: column; gap: 0; padding: .5rem 0; } .butterfly { flex-basis: 0; width: 230px; height: 140px; } .bee { flex-basis: 0; width: 200px; height: 136px; } }

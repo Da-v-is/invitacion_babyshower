@@ -1,0 +1,12 @@
+.section { position: relative; display: flex; flex-direction: column; align-items: center; padding: 2rem 1rem 1.25rem; text-align: center; }
+.section h2 { margin-bottom: .35rem; }
+.hive { width: min(100%, 440px); height: auto; aspect-ratio: 620 / 540; }
+.friends { display: flex; align-items: end; justify-content: center; gap: clamp(1.5rem, 10vw, 4rem); width: min(100%, 360px); height: 180px; margin-top: -.35rem; }
+.piglet { flex: 0 1 145px; width: 145px; height: 170px; }
+.pooh { flex: 0 1 160px; width: 160px; height: 170px; }
+@media (max-width: 560px) {
+  .section { padding-top: 1.25rem; }
+  .hive { width: min(100%, 400px); }
+  .friends { height: 160px; }
+  .piglet, .pooh { height: 150px; }
+}

@@ -1,0 +1,16 @@
+.section { text-align: center; padding: 2rem 1.25rem 3.25rem; }
+.counter { display: grid; grid-template-columns: repeat(4, minmax(0, 1fr)); gap: .55rem; max-width: 480px; margin: 1.8rem auto 0; }
+.unit { display: flex; flex-direction: column; align-items: center; gap: .2rem; position: relative;}
+.unit:not(:last-child)::after {
+  content: "";
+  position: absolute;
+  right: -0.3rem;
+  top: 10%;
+  height: 80%;
+  width: 1px;
+  background-color: var(--rose-ink);
+  opacity: 0.35;
+}
+.number { color: var(--rose-ink); font: 500 clamp(2rem, 10vw, 3.25rem)/1 'Cormorant Garamond', serif; font-variant-numeric: tabular-nums; }
+.label { color: var(--muted); font: 600 .65rem/1.2 'Nunito', sans-serif; letter-spacing: .06em; text-transform: uppercase; }
+@media (min-width: 600px) { .counter { gap: 1.5rem; } .label { font-size: .72rem; } }

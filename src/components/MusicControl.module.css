@@ -1,0 +1,4 @@
+.wrap { position: fixed; z-index: 10; right: 1rem; bottom: max(1rem, env(safe-area-inset-bottom)); display: flex; flex-direction: column; align-items: flex-end; gap: .35rem; }
+.button { display: flex; align-items: center; gap: .5rem; padding: .7rem 1rem; border: 1px solid rgba(126,75,72,.28); border-radius: 999px; background: rgba(249,239,231,.94); color: var(--rose-ink); font: 700 .75rem 'Nunito', sans-serif; box-shadow: 0 3px 12px rgba(91,53,48,.08); cursor: pointer; }
+.button span:first-child { font-size: 1rem; }
+.hint { max-width: 230px; padding: .5rem .7rem; border-radius: 9px; background: #fffaf3; color: var(--muted); font: .7rem/1.4 'Nunito', sans-serif; box-shadow: 0 2px 8px rgba(91,53,48,.08); }

@@ -1,0 +1,67 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Piglet — tímido que se mece</title>
+<style>
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+/* ============ PERSONAJE: PIGLET = Comportamiento: tierno y tímido, se
+   mece despacito abrazando su osito; cada 7 s da un saltito de alegría.
+   Dos capas: vaivén lento en la imagen + salto ocasional en un wrapper.
+   Pasa el bloque marcado a la invitación. ================================= */
+
+/* --- INICIO BLOQUE PIGLET --- */
+.piglet {
+  --w: 115px;               /* tamaño en pantalla */
+  --t: 3.2s;                /* vaivén lento */
+  position: relative; width: var(--w);
+}
+.piglet img {
+  display: block; width: 100%; height: auto;
+  transform-origin: 50% 96%;
+  animation: piglet-sway var(--t) ease-in-out infinite alternate;
+  will-change: transform; user-select: none; -webkit-user-drag: none;
+}
+.piglet::after {           /* sombra en el suelo */
+  content: ""; position: absolute; left: 24%; right: 24%; bottom: -8px;
+  height: 9px; border-radius: 50%;
+  background: rgba(90,62,27,.22); filter: blur(3px);
+  animation: piglet-shadow var(--t) ease-in-out infinite alternate;
+}
+@keyframes piglet-sway {
+  from { transform: rotate(-7deg) translateY(0); }
+  to   { transform: rotate(7deg)  translateY(-2%); }
+}
+@keyframes piglet-shadow {
+  from { transform: translateX(4px)  scaleX(1);    opacity: .8; }
+  to   { transform: translateX(-4px) scaleX(.94);  opacity: .68; }
+}
+.piglet-hop { animation: piglet-hop 7s ease-in-out infinite; }
+/* saltito de alegría: casi todo el ciclo quieto, luego salta */
+@keyframes piglet-hop {
+  0%, 78%, 100% { transform: translateY(0); }
+  83%           { transform: translateY(-22%) scaleY(1.06); }
+  90%           { transform: translateY(0) scaleY(.95); }
+  95%           { transform: translateY(-5%); }
+}
+/*--- FIN BLOQUE PIGLET ---*/
+
+/* Solo para la demo */
+@media (prefers-reduced-motion: reduce) {
+  .piglet img, .piglet::after, .piglet-hop { animation: none; }
+}
+body { margin:0; min-height:100vh; display:grid; place-items:center;
+       background: transparent; padding:0; }
+</style>
+</head>
+<body>
+  <div class="piglet">
+    <div class="piglet-hop">
+      <img src="../piggle.png" alt="Piglet abrazando su osito" decoding="async">
+    </div>
+  </div>
+</body>
+</html>

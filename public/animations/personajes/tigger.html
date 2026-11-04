@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="es">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Tigger — salto y rebote</title>
+<style>
+
+*, *::before, *::after { box-sizing: border-box; }
+html, body { width: 100%; height: 100%; overflow: hidden; }
+/* ============ PERSONAJE: TIGGER = Comportamiento: salto aplastándose y
+   estirándose con giro, y sombra que lo acompaña. Se emociona al pasar
+   el cursor. Pasa los bloques marcados a la página de la invitación. ===== */
+
+/* --- INICIO BLOQUE TIGGER --- */
+.tigger {
+  --w: 130px;               /* tamaño en pantalla */
+  --t: 1.15s;               /* duración del ciclo */
+  position: relative; width: var(--w);
+}
+.tigger img {
+  display: block; width: 100%; height: auto;
+  transform-origin: 50% 100%;
+  animation: tigger-hop var(--t) infinite;
+  will-change: transform; user-select: none; -webkit-user-drag: none;
+}
+.tigger::after {           /* sombra en el suelo */
+  content: ""; position: absolute; left: 18%; right: 18%; bottom: -8px;
+  height: 10px; border-radius: 50%;
+  background: rgba(90,62,27,.28); filter: blur(3px);
+  animation: tigger-shadow var(--t) infinite;
+}
+/* 0% y 100% idénticos -> bucle sin saltos */
+@keyframes tigger-hop {
+  0%, 100% { transform: translateY(0)   scale(1.05,.95) rotate(-3deg);
+             animation-timing-function: cubic-bezier(.2,.7,.3,1); }   /* impulso */
+  35%      { transform: translateY(-55%) scale(.94,1.07) rotate(4deg);
+             animation-timing-function: cubic-bezier(.5,0,.7,.4); }   /* sube */
+  63%      { transform: translateY(0)   scale(1.12,.86) rotate(-2deg); }    /* aterriza */
+  80%      { transform: translateY(-4%) scale(.99,1.01) rotate(1deg); }     /* mini rebote */
+}
+@keyframes tigger-shadow {
+  0%, 80%, 100% { transform: scaleX(1);     opacity: .9; }
+  35%           { transform: scaleX(.62);   opacity: .4; }
+  63%           { transform: scaleX(1.15);  opacity: .95; }
+}
+.tigger:hover img, .tigger:hover::after { animation-duration: .65s; }  /* ¡se emociona! */
+/*--- FIN BLOQUE TIGGER ---*/
+
+/* Solo para la demo */
+@media (prefers-reduced-motion: reduce) { .tigger img, .tigger::after { animation: none; } }
+body { margin:0; min-height:100vh; display:grid; place-items:end center;
+       background: transparent; padding-bottom: 8vh; }
+</style>
+</head>
+<body>
+  <div class="tigger">
+    <img src="../tiger.png" alt="Tigger saltando" decoding="async">
+  </div>
+</body>
+</html>
