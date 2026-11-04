@@ -5,7 +5,9 @@ const socialPreview = {
   name: 'absolute-social-preview-url',
   transformIndexHtml(html: string) {
     const env = typeof process === 'undefined' ? {} : process.env
-    const origin = (env.VITE_SITE_URL || env.DEPLOY_PRIME_URL || env.URL || '').replace(/\/+$/, '')
+    const configuredUrl = env.VITE_SITE_URL || env.VERCEL_PROJECT_PRODUCTION_URL || env.VERCEL_URL || env.DEPLOY_PRIME_URL || env.URL || ''
+    const withProtocol = configuredUrl && !/^https?:\/\//i.test(configuredUrl) ? `https://${configuredUrl}` : configuredUrl
+    const origin = withProtocol.replace(/\/+$/, '')
     const meta = origin
       ? `<meta property="og:url" content="${origin}/" />\n    <meta property="og:image" content="${origin}/og-invitacion.png" />\n    <meta property="og:image:width" content="1200" />\n    <meta property="og:image:height" content="630" />\n    <meta property="og:image:alt" content="Invitación al Baby Shower de Nataly" />\n    <meta name="twitter:image" content="${origin}/og-invitacion.png" />`
       : '<meta property="og:image" content="/og-invitacion.png" /><meta property="og:image:width" content="1200" /><meta property="og:image:height" content="630" /><meta property="og:image:alt" content="Invitación al Baby Shower de Nataly" /><meta name="twitter:image" content="/og-invitacion.png" />'

@@ -46,7 +46,9 @@ Para sustituir un personaje por una nueva imagen propia, reemplaza el archivo co
 3. Netlify puede detectar `netlify.toml`; los valores son build command `npm run build` y publish directory `dist`.
 4. Confirma el despliegue. Cada actualización del repositorio volverá a publicar la invitación.
 
-La imagen de vista previa para compartir está en `public/og-invitacion.png`. En una compilación de Netlify, el plugin de Vite usa la URL pública del sitio para crear metadatos Open Graph absolutos. En un despliegue manual, define `VITE_SITE_URL` con la URL pública antes de compilar. WhatsApp no puede generar la vista previa desde `localhost` ni `127.0.0.1`; el enlace debe estar publicado con HTTPS. WhatsApp puede tardar en actualizar una vista previa que ya almacenó en caché.
+La imagen de vista previa para compartir está en `public/og-invitacion.png`. El plugin de Vite genera una URL Open Graph absoluta en Vercel usando `VERCEL_PROJECT_PRODUCTION_URL` o `VERCEL_URL`, y en Netlify usa `URL`. En un despliegue manual, define `VITE_SITE_URL` con la URL pública antes de compilar. WhatsApp no puede generar la vista previa desde `localhost` ni `127.0.0.1`; el enlace debe estar publicado con HTTPS. WhatsApp puede tardar en actualizar una vista previa que ya almacenó en caché; después de redesplegar prueba compartir el enlace con `?v=2` al final.
+
+El audio se intenta iniciar al cargar, pero Chrome y otros navegadores pueden impedir reproducción automática con sonido. Si ocurre, comienza al tocar «Abrir invitación» (o el botón fijo de música); se conserva el control para pausarlo. El volumen es 60% y la velocidad 90%.
 
 También puedes ejecutar `npm run build` y publicar manualmente la carpeta `dist/`.
 

@@ -18,6 +18,9 @@ export default function App() {
   const finishOpening = useCallback(() => setOpening(false), [])
   const openInvitation = () => {
     if (opening) return
+    // Esta interacción del usuario también autoriza el inicio de audio en navegadores
+    // que bloquean autoplay con sonido al cargar la página.
+    window.dispatchEvent(new Event('invitation:open'))
     if (window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
       document.querySelector('#bienvenida')?.scrollIntoView({ behavior: 'auto' })
       return
